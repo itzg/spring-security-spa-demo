@@ -16,11 +16,9 @@ import org.springframework.security.provisioning.UserDetailsManager;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final WebProperties webProperties;
 
     @Autowired
-    public WebSecurityConfig(WebProperties webProperties) {
-        this.webProperties = webProperties;
+    public WebSecurityConfig() {
     }
 
     @Override
@@ -30,7 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/profile").permitAll()
                 .antMatchers("/api/**").fullyAuthenticated()
                 .antMatchers("/**").permitAll()
-                .anyRequest().fullyAuthenticated()
 
                 .and().logout().logoutSuccessHandler(new SimpleLogoutSuccessHandler())
                 .and().csrf().disable() // CSRF is less helpful (and a little annoying) with single page apps

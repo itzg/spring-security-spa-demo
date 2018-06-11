@@ -12,14 +12,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class ProfileService {
+public class LoginHandlerService {
     @EventListener
     public void handleAuthentication(InteractiveAuthenticationSuccessEvent event) {
         log.info("Saw interactive authentication of {}", event.getAuthentication());
-    }
-
-    @EventListener
-    public void handleAuthentication(AuthenticationSuccessEvent event) {
-        log.info("Saw authentication of {}", event.getAuthentication());
     }
 }
